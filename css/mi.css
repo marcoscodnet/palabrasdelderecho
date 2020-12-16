@@ -1,0 +1,21 @@
+.title-container{padding-left: 0 !important}
+.preloader{display: none}
+
+.title1{background: white}
+.slider-area .slider-1 h1 a, .slider-area .slider-2 h1 a {color: black; padding: 3px 10px 0 10px; display: block !important;}
+.slider-area .slider-1 div.title1 {background: white;
+    color: black; padding-left: 8px; padding-bottom: 5px;}
+.slider-area .slider-1 div.title2  {background: white; margin-bottom: 5px;
+    color: black; padding-left: 8px; padding-bottom: 5px;}
+.slider-area .slider-2 div.title2  {background: white;
+    color: black; padding-left: 8px; padding-bottom: 5px;}
+
+.slider-area .slider-2 div.slider-botton, .slider-area .slider-1 div.slider-botton{margin-top: 350px}
+.right-image img{height: 255px}
+.top-right-slider1{margin-bottom: 28px !important}
+.title2{text-transform: unset}
+.boto-soc{width: 120PX;  text-align: center;}
+
+.s-tb-c {vertical-align: bottom !important;}
+.slider-area .slider-2 div.slider-botton, .slider-area .slider-1 div.slider-botton{margin-top: unset}
+.slider-right ul li .right-content {left: unset; padding: 0 11px 0px;}
