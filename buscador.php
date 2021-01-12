@@ -27,7 +27,7 @@ $termino = strtolower($termino);
                         </ul>
                     </div>
                     <div class="header-page-title">
-                        <h1>RESULTADOS DE BÚSQUEDA DE "<?PHP ECHO $termino; ?>"</h1>
+                        <h1>RESULTADOS DE BÚSQUEDA DE <?PHP ECHO $termino; ?></h1>
                     </div>
                 </div>
             </div>

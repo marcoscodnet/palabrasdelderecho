@@ -1,5 +1,5 @@
 	<?php include'includes/header.php';
-	//ini_set('display_errors', '1');?>
+	ini_set('display_errors', '1');?>
 
     <!--Header area end here-->
     <!-- Slider Section Start Here -->
@@ -12,7 +12,7 @@
                         <?php
                         	$notasprohibidas=[];
 		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
-
+                            //echo $sql;
 							$result = $conn->query($sql);
 							$tope=1;
 							if ($result->num_rows > 0) {

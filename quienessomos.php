@@ -31,13 +31,13 @@
 												<figure><img class="img-responsive" src="'.RUTA.'upload/'.$row['foto'].'" alt="jon"></figure>
 						                        <div class="overlay">
 						                            <h2 class="member-name">
-						                            	<a href="'.RUTA.'autor/'.$row['id'].'/'.seo_url($row['nombre'].' '.$row['apellido']).'">'.$row['nombre'].' '.$row['apellido'].'
-						                            	</a>
+						                            	<!--<a href="'.RUTA.'autor/'.$row['id'].'/'.seo_url($row['nombre'].' '.$row['apellido']).'">'.$row['nombre'].' '.$row['apellido'].'
+						                            	</a>-->
 						                            </h2>
 						                            <h3 class="member-title">'.$row['puesto'].'</h3>
-						                            <a href="'.RUTA.'autor/'.$row['id'].'/'.seo_url($row['nombre'].' '.$row['apellido']).'">
+						                            <!--<a href="'.RUTA.'autor/'.$row['id'].'/'.seo_url($row['nombre'].' '.$row['apellido']).'">-->
 						                            	<div class="short-desc">'.$row['descripcion'].'</div>
-						                            </a>
+						                            <!--</a>-->
 													<div class="social-icons">';
 						                             if($row['facebook']!=""){
 						                             	echo'<a href="#" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>';}

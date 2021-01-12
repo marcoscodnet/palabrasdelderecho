@@ -3291,9 +3291,9 @@ span.cat i {
 .pagination-area ul li:first-child a {
   border-left: 1px solid #ddd;
 }
-.pagination-area ul li:nth-child(4) a {
+/*.pagination-area ul li:nth-child(4) a {
   line-height: 40px;
-}
+}*/
 .pagination-area ul li a {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border-right: 1px solid #ddd;
@@ -4968,5 +4968,5 @@ ul.share-link {
   #cuerpo-articulo #titulo-articulo{margin-top: 40px;}
   .logo-area{padding-bottom: 0 !important}
   .foti-desti{height: unset}
-  
+
 }

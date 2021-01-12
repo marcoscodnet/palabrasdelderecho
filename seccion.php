@@ -120,7 +120,12 @@
 
 								$limite=ceil($kuenta/10);
                             	for ($x=1; $x <= $limite; $x++) {
-    								echo "<li><a href='".RUTA."seccion/".$id."/".$x."'>".$x."</a></li>";
+                            	    $style = '';
+                            	    if ($x==$page){
+
+                                        $style = ' style="line-height: 40px;color:red;"';
+                                    }
+    								echo "<li><a ".$style." href='".RUTA."seccion/".$id."/".$x."/".$seccion['nombre']."'>".$x."</a></li>";
 								}
                             ?>
 

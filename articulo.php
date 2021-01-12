@@ -154,7 +154,7 @@
                             <h3 class="title-bg" style="margin-top: 0; margin-left: 15px">Últimas Notas</h3>
                             <ul class="news-post">
                             	<?php
-                            		$sql = "SELECT * FROM articulos WHERE publicada='on' ORDER BY id DESC LIMIT 5";
+                            		$sql = "SELECT * FROM articulos WHERE publicada='on' and id <> ".$fetch['id']." ORDER BY id DESC LIMIT 5";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 									    while($row = $result->fetch_assoc()) {
