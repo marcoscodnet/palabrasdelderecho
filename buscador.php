@@ -1,9 +1,10 @@
 <?php
 include'includes/header.php';
-$termino=htmlentities($_POST['termino']);
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-$termino=mysqli_real_escape_string($conn, $termino);
+//$termino=htmlentities($_POST['termino']);
+$termino=($_POST['termino']);
+/*error_reporting(E_ALL);
+ini_set('display_errors', 1);*/
+//$termino=mysqli_real_escape_string($conn, $termino);
 $termino = strtolower($termino);
 
 
