@@ -2,7 +2,11 @@
 	include'includes/header.php';
 	$id=$_GET['id'];
 	$seccion = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM secciones WHERE id='$id'"));
-?>
+
+	?>
+
+
+
 <div class="inner-page-header">
         <div class="banner">
             <img src="<?php echo RUTA ?>images/sexiones/<?php echo $seccion['foto_seccion']; ?>" alt="Banner">
@@ -27,18 +31,136 @@
             </div>
         </div>
     </div>
+<?php
+$notasprohibidas=[];
+if ($id==1){ ?>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
+            <div class="slider-area">
+                <div class="bend niceties preview-2">
+                    <div id="ensign-nivoslider" class="slides">
+                        <?php
+
+                        $sql = "SELECT * FROM articulos WHERE seccion=1 AND publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
+                        //echo $sql;
+                        $result = $conn->query($sql);
+                        $tope=1;
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                if($tope<4){
+                                    echo'<img src="'.$row['foto'].'" alt="" title="#slider-direction-'.$tope.'" class="foti-desti" />';
+                                    $notasprohibidas[]=$row['id'];
+                                }
+                                $tope=$tope+1;
+                            }
+                        }
+                        ?>
+                    </div>
+                    <!-- direction 2 -->
+                    <?php
+                    $sql = "SELECT * FROM articulos WHERE seccion=1 AND publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
+                    //echo $sql;
+                    $result = $conn->query($sql);
+                    $tope=1;
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            if($tope<4){
+                                $phpdate = strtotime($row['fecha']);
+                                $mysqldate=date('Y-m-d',$phpdate );
+
+                                $num_seccion=$row['seccion'];
+                                $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM secciones WHERE id='$num_seccion'"));
+                                $bajada=$row['bajada']; $baj_rec=substr($bajada,0,180);
+                                $notasprohibidas[]=$row['id'];
+                                echo '
+			        					<div id="slider-direction-'.$tope.'" class="slider-direction">
+				                            <div class="slider-content t-cn s-tb slider-'.$tope.'">
+				                                <div class="title-container s-tb-c">
+				                                    <div class="slider-botton">
+				                                        <ul>
+				                                            <li>
+				                                                <a class="cat-link" href="'.RUTA.'seccion/'.$fetch['id'].'/1/'.seo_url($fetch['nombre']).'">'.$fetch['nombre'].'</a>
+				                                                <span class="date">
+				                                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>'.$mysqldate.'
+				                                                </span>
+				                                                <span class="comment none">
+				                                                    <a href="#">
+				                                                    	<i class="fa fa-comment-o" aria-hidden="true"></i> 50
+				                                                    </a>
+				                                                </span>
+				                                            </li>
+				                                        </ul>
+				                                    </div>
+				                                    <h1 class="title1"><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h1>
+				                                    <div class="title2">'.$baj_rec;
+                                if(strlen($bajada)>180){echo"...";}
+                                echo'</div>
+				                                </div>
+				                            </div>
+				                        </div>';
+                                $tope=$tope+1;
+                            }
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <!-- Slider Area End Here-->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none">
+            <div class="slider-right">
+                <ul>
+                    <?php
+                    $sql = "SELECT * FROM articulos WHERE seccion=1 AND publicada='on' AND destacada2='on' ORDER BY id";
+                    $result = $conn->query($sql);
+                    $tope=0;
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            if($tope<2){
+                                $phpdate = strtotime($row['fecha']);
+                                $mysqldate=date('Y-m-d',$phpdate );
+                                $num_seccion=$row['seccion'];
+                                $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM secciones WHERE id='$num_seccion'"));
+                                $notasprohibidas[]=$row['id'];
+                                echo '
+			        					<li class="top-right-slider1">
+				                            <div class="right-content ">
+				                                <span class="category">
+				                                	<a class="cat-link" href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$fetch['nombre'].'</a>
+				                                </span>
+				                                <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i>'.$mysqldate.'</span>
+				                                <h3><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h3>
+				                            </div>
+				                            <a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">
+				                            	<div class="right-image" style="height: 255px; background-image: url(\''.$row['foto'].'\'); background-size: cover;">
+				                            	</div>
+				                            </a>
+				                        </li>';
+                                $tope=$tope+1;
+                            }
+                        }
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
     <div class="blog-page-area">
         <div class="container">
             <?php
-
+                $strprohibidas=implode(",", $notasprohibidas);
                 if(!isset($_GET['page'])){$page=1;}else{$page=$_GET['page'];}
 
                 $tope=1; $cuenta=1; $ribbon=1;
                 if($page!=1){
-	                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='$id' ORDER BY fecha DESC";
+	                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='$id' AND id not in (".$strprohibidas.") ORDER BY fecha DESC";
 	                $result = $conn->query($sql);
 	                if ($result->num_rows > 0) {
 	                    while($row = $result->fetch_assoc()) {
+
 	                        $phpdate = strtotime($row['fecha']);
 	                        $mysqldate=date('Y-m-d',$phpdate );
 	                        $mayor_a=$page-1; $mayor_a=$mayor_a*10;
@@ -68,7 +190,7 @@
 	                }
 	            } else {
 	            	/*bueno este es el if que reproduje par ahacer la priemra pagina del paginado, porque me dio paja ver cual era el error*/
-	            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='$id' ORDER BY fecha DESC LIMIT 10";
+	            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='$id' AND id not in (".$strprohibidas.") ORDER BY fecha DESC LIMIT 10";
 	                $result = $conn->query($sql);
 	                if ($result->num_rows > 0) {
 	                    while($row = $result->fetch_assoc()) {
@@ -110,7 +232,7 @@
                             <!--<li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>-->
                             <?php
                             	$kuenta=0;
-                            	$sql = "SELECT * FROM articulos WHERE publicada='on' and seccion='$id'";
+                            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND id not in (".$strprohibidas.") and seccion='$id'";
 								$result = $conn->query($sql);
 								if ($result->num_rows > 0) {
 								    while($row = $result->fetch_assoc()) {
