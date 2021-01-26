@@ -58,9 +58,9 @@
  		$cuerpo=mysqli_real_escape_string($conn, $_POST['cuerpo']);
  		$fecha=$_POST['fecha']; $seccion=$_POST['seccion']; $autor=$_POST['autor'];
  		$id=$_GET['id']; $publicada=$_POST['publicada']; $foto=$_POST['foto'];
- 		$destacada1=$_POST['destacada1']; $destacada2=$_POST['destacada2']; $tags=$_POST['tags'];
+ 		$destacada1=$_POST['destacada1']; $destacada2=$_POST['destacada2']; $destacada3=$_POST['destacada3']; $tags=$_POST['tags'];
  		$autor_invitado=$_POST['autor_invitado'];
- 		$sql = "UPDATE articulos SET titulo='$titulo', bajada='$bajada', cuerpo='$cuerpo', seccion='$seccion', foto='$foto', fecha='$fecha', publicada='$publicada', autor='$autor', destacada1='$destacada1', destacada2='$destacada2', tags='$tags', autor_invitado='$autor_invitado' WHERE id=$id";
+ 		$sql = "UPDATE articulos SET titulo='$titulo', bajada='$bajada', cuerpo='$cuerpo', seccion='$seccion', foto='$foto', fecha='$fecha', publicada='$publicada', autor='$autor', destacada1='$destacada1', destacada2='$destacada2', destacada3='$destacada3', tags='$tags', autor_invitado='$autor_invitado' WHERE id=$id";
 		if ($conn->query($sql) === TRUE) {
 			header("Location: una-nota.php?id=".$id);
 		}
@@ -71,9 +71,9 @@
  		$titulo=$_POST['titulo']; $bajada=$_POST['bajada'];
  		$cuerpo=mysqli_real_escape_string($conn, $_POST['cuerpo']);
  		$fecha=$_POST['fecha']; $seccion=$_POST['seccion']; $autor=$_POST['autor'];
- 		$destacada1=$_POST['destacada1']; $destacada2=$_POST['destacada2'];	$id=$_GET['id'];
+ 		$destacada1=$_POST['destacada1']; $destacada2=$_POST['destacada2']; $destacada3=$_POST['destacada3'];	$id=$_GET['id'];
  		$publicada=$_POST['publicada']; $foto=$_POST['foto']; $autor_invitado=$_POST['autor_invitado'];
- 		$sql = "INSERT INTO articulos (titulo, bajada, cuerpo, seccion, foto, fecha, publicada, autor, destacada1, destacada2, tags, autor_invitado) VALUES ('$titulo', '$bajada', '$cuerpo','$seccion','$foto', '$fecha', '$publicada', '$autor', '$destacada1', '$destacada2', '$tags', '$autor_invitado')";
+ 		$sql = "INSERT INTO articulos (titulo, bajada, cuerpo, seccion, foto, fecha, publicada, autor, destacada1, destacada2, destacada3, tags, autor_invitado) VALUES ('$titulo', '$bajada', '$cuerpo','$seccion','$foto', '$fecha', '$publicada', '$autor', '$destacada1', '$destacada2', '$destacada3', '$tags', '$autor_invitado')";
 		if ($conn->query($sql) === TRUE) {
 			$last_id = $conn->insert_id;
 			header('Location: una-nota.php?id='.$last_id);
@@ -153,17 +153,21 @@
 	        		echo"</select>";
 	        	?>
 
-                <div class="col-md-6">
-                    <input type="checkbox" name="publicada" <?php if(isset($fetch)){if($fetch['publicada']==="on"){echo"checked";}} ?>>Publicada
-                </div>
-                <br>
+
 
 	        	<div class="col-md-6 float-left">
-	        		<input type="checkbox" name="destacada1" <?php if(isset($fetch)){if($fetch['destacada1']==="on"){echo"checked";}} ?>>Destacada 1
+                    <input type="checkbox" name="publicada" <?php if(isset($fetch)){if($fetch['publicada']==="on"){echo"checked";}} ?>>Publicada
 	        	</div>
 	        	<div class="col-md-6 float-right">
-	        	 	<input type="checkbox" name="destacada2" <?php if(isset($fetch)){if($fetch['destacada2']==="on"){echo"checked";}} ?>>Destacada 2
+	        	 	<input type="checkbox" name="destacada1" <?php if(isset($fetch)){if($fetch['destacada1']==="on"){echo"checked";}} ?>>Destacada1
 	        	</div>
+
+                <div class="col-md-6 float-left">
+                    <input type="checkbox" name="destacada2" <?php if(isset($fetch)){if($fetch['destacada2']==="on"){echo"checked";}} ?>>Destacada2
+                </div>
+                <div class="col-md-6 float-right">
+                    <input type="checkbox" name="destacada3" <?php if(isset($fetch)){if($fetch['destacada3']==="on"){echo"checked";}} ?>>Destacada3
+                </div>
 
 
 		        <div style="width: 100%; float: left; margin-top: 10px">

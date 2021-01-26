@@ -29,7 +29,8 @@
                         <!-- direction 2 -->
                         <?php
 		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
-							$result = $conn->query($sql);
+                            //echo $sql;
+		                    $result = $conn->query($sql);
 							$tope=1;
 							if ($result->num_rows > 0) {
 		    					while($row = $result->fetch_assoc()) {
@@ -115,6 +116,41 @@
             </div>
         </div>
     </div>
+    <?php
+    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada3='on' ORDER BY id ASC LIMIT 3";
+
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+    $phpdate = strtotime($row['fecha']);
+    $mysqldate=date('Y-m-d',$phpdate );
+
+    echo'<div class="slider-right">';
+        echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <ul>
+                <li class="top-right-slider1">
+                    <div class="right-content">
+                        <span class="category">
+				                                	<a class="cat-link" href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$fetch['nombre'].'</a>
+				                                </span>
+				                                <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i>'.$mysqldate.'</span>
+				                                <h3><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h3>
+                    </div>
+                    <a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">
+				                            	<div class="right-image" style="height: 255px; background-image: url(\''.$row['foto'].'\'); background-size: cover;">
+				                            	</div>
+				                            </a>
+                </li>
+            </ul>
+        </div>';
+
+
+
+
+    }
+    echo"</div>";
+    }
+    ?>
     <!-- Slider Section end Here -->
     <!-- All News Section Start Here -->
     <div class="all-news-area">
