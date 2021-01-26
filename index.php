@@ -115,7 +115,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
     <?php
     $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada3='on' ORDER BY id ASC LIMIT 3";
 
@@ -151,6 +151,7 @@
     echo"</div>";
     }
     ?>
+    </div>
     <!-- Slider Section end Here -->
     <!-- All News Section Start Here -->
     <div class="all-news-area">
