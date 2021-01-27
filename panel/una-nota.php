@@ -87,7 +87,7 @@
 
  		 $tags=$_POST['tags'];
  		$autor_invitado=$_POST['autor_invitado'];
- 		$sql = "UPDATE articulos SET titulo='$titulo', bajada='$bajada', cuerpo='$cuerpo', seccion='$seccion', foto='$foto', fecha='$fecha', publicada='$publicada', autor='$autor', destacada1='$destacada1', destacada2='$destacada2', noticia1='$noticia1', noticia2='$noticia2', tags='$tags', autor_invitado='$autor_invitado' WHERE id=$id";
+ 		$sql = "UPDATE articulos SET titulo='$titulo', bajada='$bajada', cuerpo='$cuerpo', seccion='$seccion', foto='$foto', fecha='$fecha', publicada='$publicada', autor='$autor', destacada1='$destacada1', destacada2='$destacada2', noticia1='$noticia1', noticia2='$noticia2', noticia3='$noticia3', tags='$tags', autor_invitado='$autor_invitado' WHERE id=$id";
 		if ($conn->query($sql) === TRUE) {
 			header("Location: una-nota.php?id=".$id);
 		}
