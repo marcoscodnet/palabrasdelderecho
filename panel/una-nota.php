@@ -52,15 +52,42 @@
 			echo "<span>***Tamaño o tipo de foto inválidos***<span>";
 		}
 	}
-
+	$destacada1="";
+    $destacada2="";
+    $noticia1="";
+    $noticia2="";
+    $noticia3="";
+    switch ($_POST['destacadas']) {
+        case "1":
+            $destacada1="on";
+            break;
+        case "2":
+            $destacada2="on";
+            break;
+        case "3":
+            $noticia1="on";
+            break;
+        case "4":
+            $noticia2="on";
+            break;
+        case "5":
+            $noticia3="on";
+            break;
+    }
  	if(isset($_GET['actualizar'])){
  		$titulo=$_POST['titulo']; $bajada=$_POST['bajada'];
  		$cuerpo=mysqli_real_escape_string($conn, $_POST['cuerpo']);
  		$fecha=$_POST['fecha']; $seccion=$_POST['seccion']; $autor=$_POST['autor'];
  		$id=$_GET['id']; $publicada=$_POST['publicada']; $foto=$_POST['foto'];
- 		$destacada1=$_POST['destacada1']; $destacada2=$_POST['destacada2']; $destacada3=$_POST['destacada3']; $tags=$_POST['tags'];
+
+
+
+
+
+
+ 		 $tags=$_POST['tags'];
  		$autor_invitado=$_POST['autor_invitado'];
- 		$sql = "UPDATE articulos SET titulo='$titulo', bajada='$bajada', cuerpo='$cuerpo', seccion='$seccion', foto='$foto', fecha='$fecha', publicada='$publicada', autor='$autor', destacada1='$destacada1', destacada2='$destacada2', destacada3='$destacada3', tags='$tags', autor_invitado='$autor_invitado' WHERE id=$id";
+ 		$sql = "UPDATE articulos SET titulo='$titulo', bajada='$bajada', cuerpo='$cuerpo', seccion='$seccion', foto='$foto', fecha='$fecha', publicada='$publicada', autor='$autor', destacada1='$destacada1', destacada2='$destacada2', noticia1='$noticia1', noticia2='$noticia2', tags='$tags', autor_invitado='$autor_invitado' WHERE id=$id";
 		if ($conn->query($sql) === TRUE) {
 			header("Location: una-nota.php?id=".$id);
 		}
@@ -71,9 +98,9 @@
  		$titulo=$_POST['titulo']; $bajada=$_POST['bajada'];
  		$cuerpo=mysqli_real_escape_string($conn, $_POST['cuerpo']);
  		$fecha=$_POST['fecha']; $seccion=$_POST['seccion']; $autor=$_POST['autor'];
- 		$destacada1=$_POST['destacada1']; $destacada2=$_POST['destacada2']; $destacada3=$_POST['destacada3'];	$id=$_GET['id'];
+ 			$id=$_GET['id'];
  		$publicada=$_POST['publicada']; $foto=$_POST['foto']; $autor_invitado=$_POST['autor_invitado'];
- 		$sql = "INSERT INTO articulos (titulo, bajada, cuerpo, seccion, foto, fecha, publicada, autor, destacada1, destacada2, destacada3, tags, autor_invitado) VALUES ('$titulo', '$bajada', '$cuerpo','$seccion','$foto', '$fecha', '$publicada', '$autor', '$destacada1', '$destacada2', '$destacada3', '$tags', '$autor_invitado')";
+ 		$sql = "INSERT INTO articulos (titulo, bajada, cuerpo, seccion, foto, fecha, publicada, autor, destacada1, destacada2, noticia1, noticia2, noticia3, tags, autor_invitado) VALUES ('$titulo', '$bajada', '$cuerpo','$seccion','$foto', '$fecha', '$publicada', '$autor', '$destacada1', '$destacada2', '$noticia1', '$noticia2', '$noticia3', '$tags', '$autor_invitado')";
 		if ($conn->query($sql) === TRUE) {
 			$last_id = $conn->insert_id;
 			header('Location: una-nota.php?id='.$last_id);
@@ -158,16 +185,29 @@
 	        	<div class="col-md-6 float-left">
                     <input type="checkbox" name="publicada" <?php if(isset($fetch)){if($fetch['publicada']==="on"){echo"checked";}} ?>>Publicada
 	        	</div>
-	        	<div class="col-md-6 float-right">
-	        	 	<input type="checkbox" name="destacada1" <?php if(isset($fetch)){if($fetch['destacada1']==="on"){echo"checked";}} ?>>Destacada1
-	        	</div>
 
-                <div class="col-md-6 float-left">
-                    <input type="checkbox" name="destacada2" <?php if(isset($fetch)){if($fetch['destacada2']==="on"){echo"checked";}} ?>>Destacada2
-                </div>
-                <div class="col-md-6 float-right">
-                    <input type="checkbox" name="destacada3" <?php if(isset($fetch)){if($fetch['destacada3']==="on"){echo"checked";}} ?>>Destacada3
-                </div>
+
+                <?php
+                echo"<select name='destacadas' style='width: 100%; margin-top: 20px; margin-bottom: 20px;'>";
+
+                        echo "<option value='0'>Seleccionar...</option>";
+                        echo "<option ";
+                        if(isset($fetch)){if($fetch['destacada1']==="on"){echo"selected";}}
+                        echo " value='1'>Destacada 1</option>";
+                        echo "<option ";
+                        if(isset($fetch)){if($fetch['destacada2']==="on"){echo"selected";}}
+                        echo " value='2'>Destacada 2</option>";
+                        echo "<option ";
+                        if(isset($fetch)){if($fetch['noticia1']==="on"){echo"selected";}}
+                        echo " value='3'>Noticia 1</option>";
+                        echo "<option ";
+                        if(isset($fetch)){if($fetch['noticia2']==="on"){echo"selected";}}
+                        echo " value='4'>Noticia 2</option>";
+                        echo "<option ";
+                        if(isset($fetch)){if($fetch['noticia3']==="on"){echo"selected";}}
+                        echo " value='5'>Noticia 3</option>";
+                echo"</select>";
+                ?>
 
 
 		        <div style="width: 100%; float: left; margin-top: 10px">
