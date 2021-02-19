@@ -1174,7 +1174,7 @@
     .slider-area .slider-2 div.title2,
     .related-product-area .single-product-store::after {
         padding: 0 5%;
-        display: none;
+        /*display: none;*/
     }
     .slider-area .slider-1 div.slider-botton ul li.acitve a,
     .slider-area .slider-1 div.slider-botton ul li a,
@@ -1222,7 +1222,7 @@
     .slider-area .slider-2 div.title2,
     .related-product-area .single-product-store::after {
         padding: 0 5%;
-        display: none;
+        /*display: none;*/
     }
     .slider-area .slider-1 div.slider-botton ul li.acitve a,
     .slider-area .slider-1 div.slider-botton ul li a,
