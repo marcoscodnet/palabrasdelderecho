@@ -124,7 +124,7 @@
 	.header-middle-area .logo-area{
 		padding: 0 0 0;
 	}
-    
+
     .slider-area .slider-1 div.slider-botton ul li.acitve a,
     .slider-area .slider-1 div.slider-botton ul li a,
     .slider-area .slider-2 div.slider-botton ul li.acitve a,
@@ -142,7 +142,7 @@
     .title-bg{
 		font-size: 15px !important;
 	}
-	.sidebar-latest .news-arrow-left, 
+	.sidebar-latest .news-arrow-left,
 	.sidebar-latest .news-arrow-right{
 		width: 22px;
 		height: 22px;
@@ -213,7 +213,7 @@
 		padding: 8px 20px;
 	}
 
-	.header-bottom-area .main-menu ul li ul, 
+	.header-bottom-area .main-menu ul li ul,
 	.header-bottom-area .main-menu ul li{
 		width: 100%;
 	}
@@ -296,7 +296,7 @@
 		width: 100%;
 		text-align: center;
 	}
-	
+
 	.tab-top-content .paddimg-right-none{
 		padding-right: 15px;
 	}
@@ -480,7 +480,7 @@
 	    width: 49% !important;
 	    padding: 20px 0 12px;
 	}
-	
+
 	.home .hot-news .news-post .content h4{
 		font-size: 17px;
 	}
@@ -758,7 +758,7 @@
 		border: none;
 		padding: 0 20px;
 	}
-	
+
 	.header-middle-area .logo-area{
 		padding: 0 0 25px;
 		text-align: center;
@@ -790,15 +790,15 @@
 	.ab-count .wow:last-child{
 		padding-bottom: 0;
 	}
-	
+
 	.sticky-header{
 		padding: 0;
 	}
-	
+
 	.inner-page-header{
 		margin-top: -1px;
 	}
-	
+
 	.project-activation-area {
 	    padding: 50px 0 25px;
 	}
@@ -858,7 +858,7 @@
 		text-align: center;
 	}
 	.blog-page-area li .blog-image img{
-		width: 100%;		
+		width: 100%;
 	}
 	.blog-page-area li .blog-image{
 		margin-bottom: 20px;
@@ -885,7 +885,7 @@
     .slider-area .slider-2 div.title2,
     .related-product-area .single-product-store::after {
         padding: 0 5%;
-        display: none;
+        /*display: none;*/
     }
     .slider-area .slider-1 div.slider-botton ul li.acitve a,
     .slider-area .slider-1 div.slider-botton ul li a,
@@ -1052,7 +1052,7 @@
 	.text-right{
 		text-align: center;
 	}
-	
+
 	.slider-area .slider-2 .title-container, .slider-area .slider-1 .title-container{
 		padding-left: 0;
 	}
@@ -1212,7 +1212,7 @@
 /* Custom, iPhone Retina */
 
 @media only screen and (max-width: 320px) {
-   
+
     .slider-area .slider-1 h1,
     .slider-area .slider-2 h1 {
         font-size: 13px;
