@@ -48,7 +48,7 @@
 											    </div>
 											</div>
 						                    <div class="article">
-						                            <h3><a href="'.RUTA.'autor/'.$row['id'].'/'.seo_url($row['nombre'].' '.$row['apellido']).'" data-id="1" class="cl-single-item-popup">'.$row['nombre'].' '.$row['apellido'].'</a></h3>
+						                            <h3>'.$row['nombre'].' '.$row['apellido'].'</h3>
 						                            <div class="member-title">'.$row['puesto'].'</div>
 						                        </div>
 										</div>
@@ -88,7 +88,7 @@
 											    </div>
 											</div>
 						                    <div class="article">
-						                            <h3><a href="'.RUTA.'autor/'.$row['id'].'/'.seo_url($row['nombre'].' '.$row['apellido']).'" data-id="1" class="cl-single-item-popup">'.$row['nombre'].' '.$row['apellido'].'</a></h3>
+						                            <h3>'.$row['nombre'].' '.$row['apellido'].'</h3>
 						                            <div class="member-title">'.$row['puesto'].'</div>
 						                        </div>
 										</div>

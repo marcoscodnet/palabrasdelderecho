@@ -40,7 +40,7 @@
                 if(!isset($_GET['page'])){$page=1;}else{$page=$_GET['page'];}
 
                 $tope=1; $cuenta=1; $ribbon=1;
-                if($page!=1){
+                /*if($page!=1){
 	                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='$id' ORDER BY fecha DESC";
 
 	                $result = $conn->query($sql);
@@ -74,9 +74,11 @@
 	                        $tope=$tope+1; $cuenta=$cuenta+1;
 	                    }
 	                }
-	            } else {
-	            	/*bueno este es el if que reproduje par ahacer la priemra pagina del paginado, porque me dio paja ver cual era el error*/
-	            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='$id' ORDER BY fecha DESC LIMIT 10";
+	            } else {*/
+	            	 $limit=10;
+                    $offset = ($page-1)*$limit;
+	                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='$id' ORDER BY fecha DESC LIMIT ".$offset.",".$limit;
+
 
 	                $result = $conn->query($sql);
 	                if ($result->num_rows > 0) {
@@ -108,7 +110,7 @@
 	                        $tope=$tope+1; $cuenta=$cuenta+1;
 	                    }
 	                }
-	            }
+	            //}
                 if($cierra===0){echo"</div>";}
             ?>
 
@@ -118,25 +120,24 @@
                         <ul>
                             <!--<li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>-->
                             <?php
-                            	$kuenta=0;
-                            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND ORDER BY fecha DESC LIMIT 10";
+                            $kuenta=0;
+                            $sql = "SELECT * FROM articulos WHERE publicada='on' and seccion='$id'";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    if($row['publicada']==="on"){$kuenta=$kuenta+1;}
+                                }
+                            }
 
-								$result = $conn->query($sql);
-								if ($result->num_rows > 0) {
-								    while($row = $result->fetch_assoc()) {
-								        if($row['publicada']==="on"){$kuenta=$kuenta+1;}
-								    }
-								}
+                            $limite=ceil($kuenta/10);
+                            for ($x=1; $x <= $limite; $x++) {
+                                $style = '';
+                                if ($x==$page){
 
-								$limite=ceil($kuenta/10);
-                            	for ($x=1; $x <= $limite; $x++) {
-                            	    $style = '';
-                            	    if ($x==$page){
-
-                                        $style = ' style="line-height: 40px;color:red;"';
-                                    }
-    								echo "<li><a ".$style." href='".RUTA."seccion/".$id."/".$x."/".$seccion['nombre']."'>".$x."</a></li>";
-								}
+                                    $style = ' style="line-height: 40px;color:red;"';
+                                }
+                                echo "<li><a ".$style." href='".RUTA."seccion/".$id."/".$x."/".$seccion['nombre']."'>".$x."</a></li>";
+                            }
                             ?>
 
                             <!--<li class="active"><a href="#">1</a></li>

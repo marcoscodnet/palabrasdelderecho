@@ -42,7 +42,7 @@
                                                 }
                                             else
                                                 {
-                                                    echo "<a href='".RUTA."autor/".$autor['id']."/".seo_url($fetch['autor_invitado'])."'><i class='fa fa-user-o' aria-hidden='true'></i>";
+                                                    echo "<a href='".RUTA."quienessomos.html'><i class='fa fa-user-o' aria-hidden='true'></i>";
                                                     echo $fetch['autor_invitado'];
                                                     echo "</a>";
                                                 }
