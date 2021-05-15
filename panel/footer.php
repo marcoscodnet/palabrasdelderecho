@@ -12,7 +12,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -33,8 +33,8 @@
   <!---->
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=n6vr3upqwo1luecz9a5k2iz2mgd8ctddw5h5258jyzs0zahy"></script>
   <script>
-    tinymce.init({ 
-      selector:'#cuerpo', 
+    tinymce.init({
+      selector:'#cuerpo',
       height : "400",
       theme: 'modern',
       plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
@@ -43,35 +43,38 @@
      // without images_upload_url set, Upload tab won't show up
      images_upload_url: 'upload.php',
      images_upload_base_path: 'http://palabrasdelderecho.com.ar/panel',
+        relative_urls : false,
+        remove_script_host : true,
+        //document_base_url : 'http://www.example.com/path1/',
      // override default upload handler to simulate successful upload
      images_upload_handler: function (blobInfo, success, failure) {
         var xhr, formData;
-	      
+
 	        xhr = new XMLHttpRequest();
 	        xhr.withCredentials = false;
 	        xhr.open('POST', 'upload.php');
-	      
+
 	        xhr.onload = function() {
 	            var json;
-	        
+
 	            if (xhr.status != 200) {
 	                failure('HTTP Error: ' + xhr.status);
 	                return;
 	            }
-	        
+
 	            json = JSON.parse(xhr.responseText);
-	        
+
 	            if (!json || typeof json.location != 'string') {
 	                failure('Invalid JSON: ' + xhr.responseText);
 	                return;
 	            }
-	        
+
 	            success(json.location);
 	        };
-	      
+
 	        formData = new FormData();
 	        formData.append('file', blobInfo.blob(), blobInfo.filename());
-	      
+
 	        xhr.send(formData);
 	    },
     });

@@ -1,5 +1,5 @@
 	<?php include'includes/header.php';
-	ini_set('display_errors', '1');?>
+	ini_set('display_errors', '0');?>
 
     <!--Header area end here-->
     <!-- Slider Section Start Here -->
@@ -124,7 +124,7 @@
     while($row = $result->fetch_assoc()) {
     $phpdate = strtotime($row['fecha']);
     $mysqldate=date('Y-m-d',$phpdate );
-
+        $notasprohibidas[]=$row['id'];
     echo'<div class="slider-right">';
         echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <ul>
@@ -159,7 +159,7 @@
             while($row = $result->fetch_assoc()) {
                 $phpdate = strtotime($row['fecha']);
                 $mysqldate=date('Y-m-d',$phpdate );
-
+                $notasprohibidas[]=$row['id'];
                 echo'<div class="slider-right">';
                 echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <ul>
@@ -194,7 +194,7 @@
             while($row = $result->fetch_assoc()) {
                 $phpdate = strtotime($row['fecha']);
                 $mysqldate=date('Y-m-d',$phpdate );
-
+                $notasprohibidas[]=$row['id'];
                 echo'<div class="slider-right">';
                 echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <ul>
