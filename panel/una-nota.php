@@ -1,5 +1,5 @@
 <?php ob_start(); include 'header.php'; if(isset($_GET['id'])){$id=$_GET['id'];}
-    $url = "http://palabrasdelderecho.com.ar";
+    $url = "https://palabrasdelderecho.com.ar";
     //echo $_SERVER['SERVER_NAME'];
     if ($_SERVER['SERVER_NAME'] == "localhost") {
         $url = "http://localhost/palabrasdelderecho";
