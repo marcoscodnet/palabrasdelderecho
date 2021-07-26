@@ -81,7 +81,7 @@
                 <div class="slider-right">
                     <ul>
                     	<?php
-		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada2='on' ORDER BY id DESC LIMIT 1";
+		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada2='on' ORDER BY id DESC";
 							$result = $conn->query($sql);
 							$tope=0;
 							if ($result->num_rows > 0) {
