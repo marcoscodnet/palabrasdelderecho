@@ -15,7 +15,8 @@
 
                 </div>
             </div>
-            <div id="foto-principal" style="display: flex; margin-bottom: 20px; background-image: url('<?php echo RUTA.'upload/suscripcion.png' ?>'); width: 60%">
+
+            <div id="foto-suscripcion" style="display: flex; margin-bottom: 20px; background-image: url('<?php echo RUTA.'upload/suscripcion.png' ?>');">
 
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">

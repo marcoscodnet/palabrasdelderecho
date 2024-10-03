@@ -61,3 +61,21 @@
         margin-bottom: 10px; /* Espacio entre banners en vertical */
     }
 }
+
+#foto-suscripcion{
+    width: 60%;
+    height: 509px;
+    border: 1px solid;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Responsive: Cambia a disposición vertical en pantallas pequeñas */
+@media (max-width: 768px) {
+
+    #foto-suscripcion{
+        width: 100%;
+        height: 300px;
+    }
+}
