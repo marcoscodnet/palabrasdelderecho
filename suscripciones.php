@@ -22,8 +22,8 @@
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
                 <p style="text-align: justify;"><strong>¡AYUDANOS CON TU SUSCRIPCIÓN! ¡GRACIAS POR SUMARTE!</strong><br><br></p>
-                <p><strong>Suscripción $3.000 --&gt;</strong> <a href="https://acortar.link/3abSM9" target="_blank">Apoyanos acá</a>&nbsp;</p>
-                <p><strong>Suscripción $5.000 --&gt;</strong> <a href="https://acortar.link/nUsyec" target="_blank">Apoyanos acá</a>&nbsp;</p>
+                <p><strong>Suscripción $3.000 mensual --&gt;</strong> <a href="https://acortar.link/3abSM9" target="_blank">Apoyanos acá</a>&nbsp;</p>
+                <p><strong>Suscripción $5.000 mensual --&gt;</strong> <a href="https://acortar.link/nUsyec" target="_blank">Apoyanos acá</a>&nbsp;</p>
                 <p><strong>Suscripción que vos definas --&gt;</strong> <a href="https://acortar.link/EAow9d" target="_blank">Apoyanos acá</a> &nbsp;</p>
                 <p>&nbsp;</p>
 
