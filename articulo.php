@@ -112,6 +112,24 @@
                      ?>
                     <p id="prueba-coso" style="display: none"><?php echo $url; ?></p>
                     <div class="fb-comments" data-href="<?php echo $url; ?>" width="755" data-numposts="5"></div>
+                    <div class="slider-banner">
+                        <a href="<?php echo RUTA.'suscripciones.html' ?>">
+                            <div class="banner-mini">
+                                <img src="<?php echo RUTA.'upload/suscripcion.png' ?>" alt="Suscribite" >
+                            </div>
+                        </a>
+                        <a href="https://www.codnet.com.ar">
+                            <div class="banner-mini">
+                                <img src="<?php echo RUTA.'upload/codnet.jpeg' ?>" alt="Cod Net" >
+                            </div>
+                        </a>
+                        <a href="https://www.jursoc.unlp.edu.ar/">
+                            <div class="banner-smini">
+                                <img src="<?php echo RUTA.'upload/juridicas.jpeg' ?>" alt="Facultad de Ciencias Juridicas y Sociales" >
+                            </div>
+                        </a>
+                    </div>
+
                     <div class="like-section">
                         <h3 class="title-bg" style="padding-top: 25px;">NOTAS RELACIONADAS</h3>
                         <div class="row">

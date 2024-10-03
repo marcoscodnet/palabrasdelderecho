@@ -445,15 +445,40 @@
                 <!--Sidebar Start Here -->
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none sidebar-latest">
 
-                	<div style="height: 40px; width: 100%; float: left"></div>
 
-                	<a class="twitter-timeline" data-lang="es" data-height="500" href="https://twitter.com/blogdelderecho?ref_src=twsrc%5Etfw">Tweets by blogdelderecho</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <div class="slider-right">
+
+
+                            <a href="<?php echo RUTA.'suscripciones.html' ?>">
+
+                                    <div class="banner">
+                                        <img src="<?php echo RUTA.'upload/suscripcion.png' ?>" alt="Suscribite" style="width: 100%; height: auto;">
+                                    </div>
+
+                            </a>
+                        <a href="https://www.codnet.com.ar">
+
+                            <div class="banner">
+                                <img src="<?php echo RUTA.'upload/codnet.jpeg' ?>" alt="Cod Net" style="width: 100%; height: auto;">
+                            </div>
+
+                        </a>
+                        <a href="https://www.jursoc.unlp.edu.ar/">
+
+                            <div class="banner">
+                                <img src="<?php echo RUTA.'upload/juridicas.jpeg' ?>" alt="Facultad de Ciencias Juridicas y Sociales" style="width: 100%; height: auto;">
+                            </div>
+
+                        </a>
+
+                    </div>
 
                 	<div style="height: 40px; width: 100%; float: left"></div>
                     <div id="redes">
                         <a href="https://www.facebook.com/palabrasdelderecho/" target="_blank" class="fa fa-facebook boto-soc fa-5x"></a>
-                        <a  href="https://twitter.com/blogdelderecho" target="_blank" class="fa fa-twitter boto-soc fa-5x"></a>
+                        <a  href="https://twitter.com/blogdelderecho" target="_blank" class="fa fa-x-twitter boto-soc fa-5x"></a>
                         <a href="https://www.instagram.com/palabrasdelderecho/" target="_blank" class="fa fa-instagram boto-soc fa-5x"></a>
+                        <a href="https://www.linkedin.com/in/palabras-del-derecho-008940234?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="fa fa-linkedin boto-soc fa-5x"></a>
                     </div>
                     <div style="height: 40px; width: 100%; float: left"></div>
                     <div class="hot-news popular-related">
@@ -490,6 +515,7 @@
 
                         </ul>
                     </div>
+                    <a class="twitter-timeline" data-lang="es" data-height="1000" href="https://twitter.com/blogdelderecho?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-chrome="noborders">Tweets by blogdelderecho</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     <!--popular Post End Here -->
 
                 </div>

@@ -14,8 +14,50 @@
 .right-image img{height: 255px}
 .top-right-slider1{margin-bottom: 28px !important}
 .title2{text-transform: unset}
-.boto-soc{width: 120PX;  text-align: center;}
+.boto-soc{width: 90PX;  text-align: center;}
 
 .s-tb-c {vertical-align: bottom !important;}
 .slider-area .slider-2 div.slider-botton, .slider-area .slider-1 div.slider-botton{margin-top: unset}
 .slider-right ul li .right-content {left: unset; padding: 0 11px 0px;}
+
+.fa.fa-x-twitter{
+    font-family:sans-serif;
+}
+.fa.fa-x-twitter::before{
+    content:"𝕏";
+    font-size:1.2em;
+}
+.banner{
+    margin:10px;
+
+}
+.banner-mini{
+
+    /*width: 250px;*/
+}
+.slider-banner {
+    display: flex;
+    flex-direction: row; /* Fila (horizontal) por defecto */
+    gap: 20px; /* Espacio entre banners */
+    justify-content: space-between; /* Distribuir espacio entre los banners */
+}
+
+.slider-banner a {
+    flex: 1; /* Los enlaces (banners) ocuparán el mismo ancho */
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsive: Cambia a disposición vertical en pantallas pequeñas */
+@media (max-width: 768px) {
+    .slider-banner {
+        flex-direction: column; /* Cambia a columna (vertical) en pantallas pequeñas */
+    }
+
+    .slider-banner a {
+        margin-bottom: 10px; /* Espacio entre banners en vertical */
+    }
+}
