@@ -74,8 +74,27 @@
 /* Responsive: Cambia a disposición vertical en pantallas pequeñas */
 @media (max-width: 768px) {
 
+    .home-about-area .title2 {
+        margin: 10px 0 25px;
+        text-transform: uppercase;
+    }
+
     #foto-suscripcion{
         width: 100%;
         height: 300px;
     }
+}
+
+.fa.fa-search {
+    font-family: 'FontAwesome' !important;
+    font-size: 12px !important;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+.header-bottom-area .search .search-box {
+
+
+    width: 90% !important;
+
 }
