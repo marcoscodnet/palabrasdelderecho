@@ -5,7 +5,7 @@
     <!-- Slider Section Start Here -->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 padding-0">
+            <div class="col-xs-12 padding-0 banner-top">
                 <?php
                 $sql_banner = "SELECT * FROM banners WHERE posicion='top' LIMIT 1";
                 $result_banner = $conn->query($sql_banner);
@@ -93,7 +93,7 @@
             </div>
             <!-- Slider Area End Here-->
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none">
-                <div class="slider-right">
+                <div class="slider-right banner-lateral">
                      <?php
                     $sql_banner = "SELECT * FROM banners WHERE posicion='lateral' LIMIT 1";
                     $result_banner = $conn->query($sql_banner);
