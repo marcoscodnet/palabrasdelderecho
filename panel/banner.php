@@ -42,7 +42,19 @@ if(isset($_GET['nuevo'])){
         echo "<p style='color: red;'>Error al subir la imagen.</p>";
     }
 
-    $sql = "INSERT INTO banners (imagen, url, posicion, estado, creado_en) VALUES ('$imagen', '$url', '$posicion', '$estado', '$hoy')";
+    // Verificar si ya existe un banner en esa posición
+    $sql_check = "SELECT id FROM banners WHERE posicion = '$posicion'";
+    $result = $conn->query($sql_check);
+
+    if ($result->num_rows > 0) {
+        // Si ya hay un banner, actualiza
+        $sql = "UPDATE banners SET imagen='$imagen', url='$url', posicion='$posicion', estado='$estado' WHERE id='$id'";
+    } else {
+        // Si no hay, inserta un nuevo banner
+        $sql = "INSERT INTO banners (imagen, url, posicion, estado, creado_en) VALUES ('$imagen', '$url', '$posicion', '$estado', '$hoy')";
+    }
+
+
     if ($conn->query($sql) === TRUE) {
         header('Location: banners.php');
     } else {
