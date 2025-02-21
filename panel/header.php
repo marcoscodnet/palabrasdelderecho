@@ -86,6 +86,17 @@ error_reporting(E_ALL);*/
             <span class="nav-link-text">Autores</span>
           </a>
         </li>
+          <li class="separador"></li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+              <a class="nav-link" href="banners.php">
+                  <span class="nav-link-text">Banners</span>
+              </a>
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+              <a class="nav-link" href="banner.php">
+                  <span class="nav-link-text">Agregar Banners</span>
+              </a>
+          </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

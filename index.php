@@ -5,6 +5,20 @@
     <!-- Slider Section Start Here -->
     <div class="container">
         <div class="row">
+            <div class="col-xs-12 padding-0">
+                <?php
+                $sql_banner = "SELECT * FROM banners WHERE posicion='top' LIMIT 1";
+                $result_banner = $conn->query($sql_banner);
+                if ($result_banner->num_rows > 0) {
+                    $banner = $result_banner->fetch_assoc();
+                    echo '<a href="'.$banner['url'].'" target="_blank">
+                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: 90px;">
+                          </a>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
                 <div class="slider-area">
                     <div class="bend niceties preview-2">
@@ -48,6 +62,7 @@
 				                                <div class="title-container s-tb-c">
 				                                    <div class="slider-botton">
 				                                        <ul>
+				                                        
 				                                            <li>
 				                                                <a class="cat-link" href="'.RUTA.'seccion/'.$fetch['id'].'/1/'.seo_url($fetch['nombre']).'">'.$fetch['nombre'].'</a>
 				                                                <span class="date">
@@ -79,8 +94,26 @@
             <!-- Slider Area End Here-->
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none">
                 <div class="slider-right">
+                     <?php
+                    $sql_banner = "SELECT * FROM banners WHERE posicion='lateral' LIMIT 1";
+                    $result_banner = $conn->query($sql_banner);
+                    if ($result_banner->num_rows > 0) {
+                    $banner = $result_banner->fetch_assoc();
+                    echo '
+                    <div class="top-right-slider1">
+
+                        <a href="'.$banner['url'].'" target="_blank">
+                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: 200px;">
+
+                        </a>
+                    </div>';
+
+                    }
+                    ?>
                     <ul>
-                    	<?php
+                        <?php
+
+
 		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada2='on' ORDER BY id DESC";
 							$result = $conn->query($sql);
 							$tope=0;
@@ -449,13 +482,30 @@
                     <div class="slider-right">
 
 
-                            <a href="<?php echo RUTA.'suscripciones.html' ?>">
+                            <!--<a href="<?php echo RUTA.'suscripciones.html' ?>">
 
                                     <div class="banner">
                                         <img src="<?php echo RUTA.'upload/suscripcion.png' ?>" alt="Suscribite" style="width: 100%; height: auto;">
                                     </div>
 
-                            </a>
+                            </a>-->
+                        <?php
+                        $sql_banner = "SELECT * FROM banners WHERE posicion='general' LIMIT 1";
+                        $result_banner = $conn->query($sql_banner);
+                        if ($result_banner->num_rows > 0) {
+                            $banner = $result_banner->fetch_assoc();
+                            echo '
+                    
+
+                        <a href="'.$banner['url'].'" target="_blank">
+                        <div class="banner">
+                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: auto;">
+                    </div>
+                        </a>
+                    ';
+
+                        }
+                        ?>
                         <a href="https://www.codnet.com.ar">
 
                             <div class="banner">
@@ -517,7 +567,23 @@
                     </div>
                     <a class="twitter-timeline" data-lang="es" data-height="1000" href="https://twitter.com/blogdelderecho?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-chrome="noborders">Tweets by blogdelderecho</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     <!--popular Post End Here -->
+                    <?php
+                    $sql_banner = "SELECT * FROM banners WHERE posicion='estandar' LIMIT 1";
+                    $result_banner = $conn->query($sql_banner);
+                    if ($result_banner->num_rows > 0) {
+                        $banner = $result_banner->fetch_assoc();
+                        echo '
+                    
 
+                        <a href="'.$banner['url'].'" target="_blank">
+                        <div class="banner">
+                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: auto;">
+                    </div>
+                        </a>
+                    ';
+
+                    }
+                    ?>
                 </div>
             </div>
         </div>
