@@ -1,62 +1,62 @@
-	<?php include'includes/header.php';
-	ini_set('display_errors', '0');?>
+<?php include'includes/header.php';
+ini_set('display_errors', '0');?>
 
-    <!--Header area end here-->
-    <!-- Slider Section Start Here -->
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 padding-0 banner-top">
-                <?php
-                $sql_banner = "SELECT * FROM banners WHERE posicion='top' LIMIT 1";
-                $result_banner = $conn->query($sql_banner);
-                if ($result_banner->num_rows > 0) {
-                    $banner = $result_banner->fetch_assoc();
-                    echo '<a href="'.$banner['url'].'" target="_blank">
+<!--Header area end here-->
+<!-- Slider Section Start Here -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 padding-0 banner-top">
+            <?php
+            $sql_banner = "SELECT * FROM banners WHERE posicion='cabecera' LIMIT 1";
+            $result_banner = $conn->query($sql_banner);
+            if ($result_banner->num_rows > 0) {
+                $banner = $result_banner->fetch_assoc();
+                echo '<a href="'.$banner['url'].'" target="_blank">
                             <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: 90px;">
                           </a>';
-                }
-                ?>
-            </div>
+            }
+            ?>
         </div>
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
-                <div class="slider-area">
-                    <div class="bend niceties preview-2">
-                        <div id="ensign-nivoslider" class="slides">
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
+            <div class="slider-area">
+                <div class="bend niceties preview-2">
+                    <div id="ensign-nivoslider" class="slides">
                         <?php
-                        	$notasprohibidas=[];
-		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
-                            //echo $sql;
-							$result = $conn->query($sql);
-							$tope=1;
-							if ($result->num_rows > 0) {
-		    					while($row = $result->fetch_assoc()) {
-		        					if($tope<4){
-		        						 echo'<img src="'.$row['foto'].'" alt="" title="#slider-direction-'.$tope.'" class="foti-desti" />';
-		        						 $notasprohibidas[]=$row['id'];
-		        					}
-		        					$tope=$tope+1;
-		        				}
-		        			}
-		        		?>
-                        </div>
-                        <!-- direction 2 -->
-                        <?php
-		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
-                            //echo $sql;
-		                    $result = $conn->query($sql);
-							$tope=1;
-							if ($result->num_rows > 0) {
-		    					while($row = $result->fetch_assoc()) {
-		        					if($tope<4){
-		        						$phpdate = strtotime($row['fecha']);
-										$mysqldate=date('Y-m-d',$phpdate );
+                        $notasprohibidas=[];
+                        $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
+                        //echo $sql;
+                        $result = $conn->query($sql);
+                        $tope=1;
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                if($tope<4){
+                                    echo'<img src="'.$row['foto'].'" alt="" title="#slider-direction-'.$tope.'" class="foti-desti" />';
+                                    $notasprohibidas[]=$row['id'];
+                                }
+                                $tope=$tope+1;
+                            }
+                        }
+                        ?>
+                    </div>
+                    <!-- direction 2 -->
+                    <?php
+                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada1='on' ORDER BY id DESC LIMIT 1";
+                    //echo $sql;
+                    $result = $conn->query($sql);
+                    $tope=1;
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            if($tope<4){
+                                $phpdate = strtotime($row['fecha']);
+                                $mysqldate=date('Y-m-d',$phpdate );
 
-										$num_seccion=$row['seccion'];
-										$fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM secciones WHERE id='$num_seccion'"));
-										$bajada=$row['bajada']; $baj_rec=substr($bajada,0,180);
-			        					$notasprohibidas[]=$row['id'];
-			        					echo '
+                                $num_seccion=$row['seccion'];
+                                $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM secciones WHERE id='$num_seccion'"));
+                                $bajada=$row['bajada']; $baj_rec=substr($bajada,0,180);
+                                $notasprohibidas[]=$row['id'];
+                                echo '
 			        					<div id="slider-direction-'.$tope.'" class="slider-direction">
 				                            <div class="slider-content t-cn s-tb slider-'.$tope.'">
 				                                <div class="title-container s-tb-c">
@@ -78,54 +78,39 @@
 				                                    </div>
 				                                    <h1 class="title1"><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h1>
 				                                    <div class="title2">'.$baj_rec;
-				                                    if(strlen($bajada)>180){echo"...";}
-				                                    echo'</div>
+                                if(strlen($bajada)>180){echo"...";}
+                                echo'</div>
 				                                </div>
 				                            </div>
 				                        </div>';
-				                        $tope=$tope+1;
-				                    }
-		    					}
-							}
-		                ?>
-                    </div>
-                </div>
-            </div>
-            <!-- Slider Area End Here-->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none">
-                <div class="slider-right banner-lateral">
-                     <?php
-                    $sql_banner = "SELECT * FROM banners WHERE posicion='lateral' LIMIT 1";
-                    $result_banner = $conn->query($sql_banner);
-                    if ($result_banner->num_rows > 0) {
-                    $banner = $result_banner->fetch_assoc();
-                    echo '
-                    <div class="top-right-slider1">
-
-                        <a href="'.$banner['url'].'" target="_blank">
-                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: 200px;">
-
-                        </a>
-                    </div>';
-
+                                $tope=$tope+1;
+                            }
+                        }
                     }
                     ?>
-                    <ul>
-                        <?php
+                </div>
+            </div>
+        </div>
+        <!-- Slider Area End Here-->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none">
+            <div class="slider-right banner-lateral">
+
+                <ul>
+                    <?php
 
 
-		                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada2='on' ORDER BY id DESC";
-							$result = $conn->query($sql);
-							$tope=0;
-							if ($result->num_rows > 0) {
-		    					while($row = $result->fetch_assoc()) {
-		        					if($tope<2){
-		        						$phpdate = strtotime($row['fecha']);
-										$mysqldate=date('Y-m-d',$phpdate );
-										$num_seccion=$row['seccion'];
-										$fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM secciones WHERE id='$num_seccion'"));
-										$notasprohibidas[]=$row['id'];
-			        					echo '
+                    $sql = "SELECT * FROM articulos WHERE publicada='on' AND destacada2='on' ORDER BY id DESC";
+                    $result = $conn->query($sql);
+                    $tope=0;
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            if($tope<2){
+                                $phpdate = strtotime($row['fecha']);
+                                $mysqldate=date('Y-m-d',$phpdate );
+                                $num_seccion=$row['seccion'];
+                                $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM secciones WHERE id='$num_seccion'"));
+                                $notasprohibidas[]=$row['id'];
+                                echo '
 			        					<li class="top-right-slider1">
 				                            <div class="right-content ">
 				                                <span class="category">
@@ -139,27 +124,27 @@
 				                            	</div>
 				                            </a>
 				                        </li>';
-				                        $tope=$tope+1;
-				                    }
-		    					}
-							}
-		                ?>
-                    </ul>
-                </div>
+                                $tope=$tope+1;
+                            }
+                        }
+                    }
+                    ?>
+                </ul>
             </div>
         </div>
+    </div>
     <br>
     <?php
     $sql = "SELECT * FROM articulos WHERE publicada='on' AND noticia1='on' ORDER BY id DESC LIMIT 1";
 
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-    $phpdate = strtotime($row['fecha']);
-    $mysqldate=date('Y-m-d',$phpdate );
-        $notasprohibidas[]=$row['id'];
-    echo'<div class="slider-right">';
-        echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        while($row = $result->fetch_assoc()) {
+            $phpdate = strtotime($row['fecha']);
+            $mysqldate=date('Y-m-d',$phpdate );
+            $notasprohibidas[]=$row['id'];
+            echo'<div class="slider-right">';
+            echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <ul>
                 <li class="top-right-slider1">
                     <div class="right-content">
@@ -180,21 +165,21 @@
 
 
 
-    }
-    echo"</div>";
+        }
+        echo"</div>";
     }
     ?>
-        <?php
-        $sql = "SELECT * FROM articulos WHERE publicada='on' AND noticia2='on' ORDER BY id DESC LIMIT 1";
+    <?php
+    $sql = "SELECT * FROM articulos WHERE publicada='on' AND noticia2='on' ORDER BY id DESC LIMIT 1";
 
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $phpdate = strtotime($row['fecha']);
-                $mysqldate=date('Y-m-d',$phpdate );
-                $notasprohibidas[]=$row['id'];
-                echo'<div class="slider-right">';
-                echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $phpdate = strtotime($row['fecha']);
+            $mysqldate=date('Y-m-d',$phpdate );
+            $notasprohibidas[]=$row['id'];
+            echo'<div class="slider-right">';
+            echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <ul>
                 <li class="top-right-slider1">
                     <div class="right-content">
@@ -215,21 +200,21 @@
 
 
 
-            }
-            echo"</div>";
         }
-        ?>
-        <?php
-        $sql = "SELECT * FROM articulos WHERE publicada='on' AND noticia3='on' ORDER BY id DESC LIMIT 1";
+        echo"</div>";
+    }
+    ?>
+    <?php
+    $sql = "SELECT * FROM articulos WHERE publicada='on' AND noticia3='on' ORDER BY id DESC LIMIT 1";
 
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $phpdate = strtotime($row['fecha']);
-                $mysqldate=date('Y-m-d',$phpdate );
-                $notasprohibidas[]=$row['id'];
-                echo'<div class="slider-right">';
-                echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $phpdate = strtotime($row['fecha']);
+            $mysqldate=date('Y-m-d',$phpdate );
+            $notasprohibidas[]=$row['id'];
+            echo'<div class="slider-right">';
+            echo'<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <ul>
                 <li class="top-right-slider1">
                     <div class="right-content">
@@ -250,34 +235,48 @@
 
 
 
-            }
-            echo"</div>";
         }
-        ?>
-    </div>
-    <!-- Slider Section end Here -->
-    <!-- All News Section Start Here -->
-    <div class="all-news-area">
-        <div class="container">
-            <!-- latest news Start Here -->
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 tab-home">
-                    <ul class="nav nav-tabs" style="margin-bottom: 30px !important">
-                        <li class="title-bg">Noticias</li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="tab1" class="tab-pane fade in active">
-                            <div class="tab-top-content">
-                            	<?php
-		                            $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='1' ORDER BY fecha DESC";
-									$result = $conn->query($sql);
-									$tope=0;
-									if ($result->num_rows > 0) {
-		    							while($row = $result->fetch_assoc()) {
-		        							if($tope===0 && !in_array($row['id'], $notasprohibidas)){
-		        								$phpdate = strtotime($row['fecha']);
-												$mysqldate=date('Y-m-d',$phpdate );
-			        							echo '
+        echo"</div>";
+    }
+    ?>
+</div>
+<!-- Slider Section end Here -->
+<!-- All News Section Start Here -->
+<div class="all-news-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 padding-0 banner-top">
+                <?php
+                $sql_banner = "SELECT * FROM banners WHERE posicion='medio' LIMIT 1";
+                $result_banner = $conn->query($sql_banner);
+                if ($result_banner->num_rows > 0) {
+                    $banner = $result_banner->fetch_assoc();
+                    echo '<a href="'.$banner['url'].'" target="_blank">
+                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: 90px;">
+                          </a>';
+                }
+                ?>
+            </div>
+        </div>
+        <!-- latest news Start Here -->
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 tab-home">
+                <ul class="nav nav-tabs" style="margin-bottom: 30px !important">
+                    <li class="title-bg">Noticias</li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab1" class="tab-pane fade in active">
+                        <div class="tab-top-content">
+                            <?php
+                            $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='1' ORDER BY fecha DESC";
+                            $result = $conn->query($sql);
+                            $tope=0;
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    if($tope===0 && !in_array($row['id'], $notasprohibidas)){
+                                        $phpdate = strtotime($row['fecha']);
+                                        $mysqldate=date('Y-m-d',$phpdate );
+                                        echo '
 			        							<div class="row">
 				                                    <div id="foto-noti-home" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 paddimg-right-none" style=" background-image: url(\''.$row['foto'].'\');">
 				                                        <a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">
@@ -293,27 +292,27 @@
 				                                       	</span>
 				                                        <h3><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h3>
 				                                        <p>'.$row['bajada'].'</p>
-				                                        <a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'" class="read-more hvr-bounce-to-right">Leer más</a>
+				                                        <a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'" class="read-more hvr-bounce-to-right">Leer mÃ¡s</a>
 				                                    </div>
 				                                </div>';
-				                                $tope=$tope+1; $nousar=$row['id'];
-				                            }
-		    							}
-									}
-		                        ?>
-                            </div>
-                            <div class="tab-bottom-content">
-                                <div class="row">
-                                	<?php
-		                            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='1' ORDER BY fecha DESC";
-										$result = $conn->query($sql);
-										$tope=0;
-										if ($result->num_rows > 0) {
-		    								while($row = $result->fetch_assoc()) {
-	        									$phpdate = strtotime($row['fecha']);
-												$mysqldate=date('Y-m-d',$phpdate );
-												if(!in_array($row['id'], $notasprohibidas) && $tope<4 && $row['id']!=$nousar){
-			        								echo '
+                                        $tope=$tope+1; $nousar=$row['id'];
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                        <div class="tab-bottom-content">
+                            <div class="row">
+                                <?php
+                                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='1' ORDER BY fecha DESC";
+                                $result = $conn->query($sql);
+                                $tope=0;
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        $phpdate = strtotime($row['fecha']);
+                                        $mysqldate=date('Y-m-d',$phpdate );
+                                        if(!in_array($row['id'], $notasprohibidas) && $tope<4 && $row['id']!=$nousar){
+                                            echo '
 			        								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 tab-area">
 	                                					<a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">
 		                                					<div class="col-sm-12 col-xs-3 img-tab" style="background-image: url( \''.$row['foto'].' \'); height: 120px; background-size: cover;     background-position: center;">
@@ -327,42 +326,42 @@
 				                                            <h4><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h4>
 				                                        </div>
 				                                    </div>';
-				                                    $tope=$tope+1;
-				                                }
-		    								}
-										}
-		                            ?>
+                                            $tope=$tope+1;
+                                        }
+                                    }
+                                }
+                                ?>
 
 
 
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Trending news  here-->
-                    <div class="trending-news separator-large">
-                        <div class="row">
-                            <div class="view-area" style="padding-bottom: 4px;">
-                                <div class="col-sm-8">
-                                    <h3 class="title-bg">Publicaciones</h3>
-                                </div>
-                                <div class="col-sm-4 text-right" style="padding: 25px 40px 0px 0;">
-                                    <a href="<?php echo RUTA ?>seccion/3/1/publicaciones">Ver todas <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                </div>
+                </div>
+                <!-- Trending news  here-->
+                <div class="trending-news separator-large">
+                    <div class="row">
+                        <div class="view-area" style="padding-bottom: 4px;">
+                            <div class="col-sm-8">
+                                <h3 class="title-bg">Publicaciones</h3>
                             </div>
+                            <div class="col-sm-4 text-right" style="padding: 25px 40px 0px 0;">
+                                <a href="<?php echo RUTA ?>seccion/3/1/publicaciones">Ver todas <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="list-col">
-                            		<?php
-		                            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='3' ORDER BY fecha DESC";
-										$result = $conn->query($sql);
-										$tope=0;
-										if ($result->num_rows > 0) {
-		    								while($row = $result->fetch_assoc()) {
-		        								if($tope===0  && !in_array($row['id'], $notasprohibidas)){
-		        									$phpdate = strtotime($row['fecha']);
-													$mysqldate=date('d-m-Y',$phpdate );
-			        								echo '
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="list-col">
+                                <?php
+                                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='3' ORDER BY fecha DESC";
+                                $result = $conn->query($sql);
+                                $tope=0;
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        if($tope===0  && !in_array($row['id'], $notasprohibidas)){
+                                            $phpdate = strtotime($row['fecha']);
+                                            $mysqldate=date('d-m-Y',$phpdate );
+                                            echo '
 			        								<a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">
 	                                    				<img src="'.$row['foto'].'" alt="" title="" />
 	                                    			</a>
@@ -376,25 +375,25 @@
 				                                        <h3><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h3>
 				                                        <p>'.$row['bajada'].'</p>
 				                                    </div>';
-				                                    $tope=1; $nousar=$row['id'];
-				                                }
-		    								}
-										}
-		                            ?>
-                                </div>
+                                            $tope=1; $nousar=$row['id'];
+                                        }
+                                    }
+                                }
+                                ?>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <ul class="news-post">
-                                	<?php
-		                            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='3' ORDER BY id DESC";
-										$result = $conn->query($sql);
-										$tope=0;
-										if ($result->num_rows > 0) {
-		    								while($row = $result->fetch_assoc()) {
-		        								if(!in_array($row['id'], $notasprohibidas) && $tope<4 && $row['id']!=$nousar){
-		        									$phpdate = strtotime($row['fecha']);
-													$mysqldate=date('Y-m-d',$phpdate );
-			        								echo '
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <ul class="news-post">
+                                <?php
+                                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='3' ORDER BY id DESC";
+                                $result = $conn->query($sql);
+                                $tope=0;
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        if(!in_array($row['id'], $notasprohibidas) && $tope<4 && $row['id']!=$nousar){
+                                            $phpdate = strtotime($row['fecha']);
+                                            $mysqldate=date('Y-m-d',$phpdate );
+                                            echo '
 			        								 <li>
 		                                        		<div class="row">
 		                                            		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
@@ -413,41 +412,41 @@
 		                                            		</div>
 		                                        		</div>
 		                                    		</li>';
-				                                    $tope=$tope+1;
-				                                }
-		    								}
-										}
-		                            ?>
-                                </ul>
-                            </div>
+                                            $tope=$tope+1;
+                                        }
+                                    }
+                                }
+                                ?>
+                            </ul>
                         </div>
                     </div>
-                    <!--Start what’s hot now -->
-                    <div class="hot-news">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="view-area" style="margin-bottom: -25px; padding-bottom: 5px;">
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h3 class="title-bg">Legislación</h3>
-                                        </div>
-                                        <div class="col-sm-4 text-right">
-                                            <a href="<?php echo RUTA.'seccion/4/1/Legislacion' ?>">Ver todas <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                        </div>
+                </div>
+                <!--Start whatâ€™s hot now -->
+                <div class="hot-news">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="view-area" style="margin-bottom: -25px; padding-bottom: 5px;">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <h3 class="title-bg">LegislaciÃ³n</h3>
+                                    </div>
+                                    <div class="col-sm-4 text-right">
+                                        <a href="<?php echo RUTA.'seccion/4/1/Legislacion' ?>">Ver todas <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
+                            </div>
 
-                                <ul class="news-post news-feature-mb">
-                                	<?php
-		                            	$sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='4' ORDER BY id DESC";
-										$result = $conn->query($sql);
-										$tope=0;
-										if ($result->num_rows > 0) {
-		    								while($row = $result->fetch_assoc()) {
-		        								if($tope<3){
-		        									$phpdate = strtotime($row['fecha']);
-													$mysqldate=date('Y-m-d',$phpdate );
-			        								echo '
+                            <ul class="news-post news-feature-mb">
+                                <?php
+                                $sql = "SELECT * FROM articulos WHERE publicada='on' AND seccion='4' ORDER BY id DESC";
+                                $result = $conn->query($sql);
+                                $tope=0;
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        if($tope<3){
+                                            $phpdate = strtotime($row['fecha']);
+                                            $mysqldate=date('Y-m-d',$phpdate );
+                                            echo '
 			        								<li>
                                        					<div class="row">
                                             				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-4">
@@ -464,84 +463,82 @@
                                             				</div>
                                         				</div>
                                     				</li>';
-				                                    $tope=$tope+1;
-				                                }
-		    								}
-										}
-		                            ?>
-                                </ul>
-                            </div>
+                                            $tope=$tope+1;
+                                        }
+                                    }
+                                }
+                                ?>
+                            </ul>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <?php
+                            $sql_banner = "SELECT * FROM banners WHERE posicion='pie' LIMIT 1";
+                            $result_banner = $conn->query($sql_banner);
+                            if ($result_banner->num_rows > 0) {
+                                $banner = $result_banner->fetch_assoc();
+                                echo '<a href="'.$banner['url'].'" target="_blank">
+                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: 90px;">
+                          </a>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--Sidebar Start Here -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none sidebar-latest">
+
+
+                <div class="slider-right">
+
+
+                    <a href="<?php echo RUTA.'suscripciones.html' ?>">
+
+                        <div class="banner">
+                            <img src="<?php echo RUTA.'upload/suscripcion.png' ?>" alt="Suscribite" style="width: 100%; height: auto;">
+                        </div>
+
+                    </a>-
+
+                    <a href="https://www.codnet.com.ar">
+
+                        <div class="banner">
+                            <img src="<?php echo RUTA.'upload/codnet.jpeg' ?>" alt="Cod Net" style="width: 100%; height: auto;">
+                        </div>
+
+                    </a>
+                    <a href="https://www.jursoc.unlp.edu.ar/">
+
+                        <div class="banner">
+                            <img src="<?php echo RUTA.'upload/juridicas.jpeg' ?>" alt="Facultad de Ciencias Juridicas y Sociales" style="width: 100%; height: auto;">
+                        </div>
+
+                    </a>
 
                 </div>
-                <!--Sidebar Start Here -->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none sidebar-latest">
 
-
-                    <div class="slider-right">
-
-
-                            <!--<a href="<?php echo RUTA.'suscripciones.html' ?>">
-
-                                    <div class="banner">
-                                        <img src="<?php echo RUTA.'upload/suscripcion.png' ?>" alt="Suscribite" style="width: 100%; height: auto;">
-                                    </div>
-
-                            </a>-->
+                <div style="height: 40px; width: 100%; float: left"></div>
+                <div id="redes">
+                    <a href="https://www.facebook.com/palabrasdelderecho/" target="_blank" class="fa fa-facebook boto-soc fa-5x"></a>
+                    <a  href="https://twitter.com/blogdelderecho" target="_blank" class="fa fa-x-twitter boto-soc fa-5x"></a>
+                    <a href="https://www.instagram.com/palabrasdelderecho/" target="_blank" class="fa fa-instagram boto-soc fa-5x"></a>
+                    <a href="https://www.linkedin.com/in/palabras-del-derecho-008940234?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="fa fa-linkedin boto-soc fa-5x"></a>
+                </div>
+                <div style="height: 40px; width: 100%; float: left"></div>
+                <div class="hot-news popular-related">
+                    <h3 class="title-bg">Ãšltimos Fallos</h3>
+                    <ul class="news-post">
                         <?php
-                        $sql_banner = "SELECT * FROM banners WHERE posicion='general' LIMIT 1";
-                        $result_banner = $conn->query($sql_banner);
-                        if ($result_banner->num_rows > 0) {
-                            $banner = $result_banner->fetch_assoc();
-                            echo '
-                    
-
-                        <a href="'.$banner['url'].'" target="_blank">
-                        <div class="banner">
-                            <img src="panel/'.$banner['imagen'].'" alt="Publicidad" style="width: 100%; height: auto;">
-                    </div>
-                        </a>
-                    ';
-
-                        }
-                        ?>
-                        <a href="https://www.codnet.com.ar">
-
-                            <div class="banner">
-                                <img src="<?php echo RUTA.'upload/codnet.jpeg' ?>" alt="Cod Net" style="width: 100%; height: auto;">
-                            </div>
-
-                        </a>
-                        <a href="https://www.jursoc.unlp.edu.ar/">
-
-                            <div class="banner">
-                                <img src="<?php echo RUTA.'upload/juridicas.jpeg' ?>" alt="Facultad de Ciencias Juridicas y Sociales" style="width: 100%; height: auto;">
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                	<div style="height: 40px; width: 100%; float: left"></div>
-                    <div id="redes">
-                        <a href="https://www.facebook.com/palabrasdelderecho/" target="_blank" class="fa fa-facebook boto-soc fa-5x"></a>
-                        <a  href="https://twitter.com/blogdelderecho" target="_blank" class="fa fa-x-twitter boto-soc fa-5x"></a>
-                        <a href="https://www.instagram.com/palabrasdelderecho/" target="_blank" class="fa fa-instagram boto-soc fa-5x"></a>
-                        <a href="https://www.linkedin.com/in/palabras-del-derecho-008940234?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="fa fa-linkedin boto-soc fa-5x"></a>
-                    </div>
-                    <div style="height: 40px; width: 100%; float: left"></div>
-                    <div class="hot-news popular-related">
-                    	<h3 class="title-bg">Últimos Fallos</h3>
-                        <ul class="news-post">
-                        	<?php
-			                    $sql = "SELECT * FROM fallos ORDER BY id DESC LIMIT 5";
-								$result = $conn->query($sql);
-								if ($result->num_rows > 0) {
-			    					while($row = $result->fetch_assoc()) {
-			        					$phpdate = strtotime($row['fecha']);
-										$mysqldate=date('Y-m-d',$phpdate );
-				        				echo '<li>
+                        $sql = "SELECT * FROM fallos ORDER BY id DESC LIMIT 5";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                $phpdate = strtotime($row['fecha']);
+                                $mysqldate=date('Y-m-d',$phpdate );
+                                echo '<li>
 				                                <div class="row">
 				                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
 				                                        <div class="item-post">
@@ -559,20 +556,20 @@
 				                                    </div>
 				                                </div>
 				                            </li>';
-			    					}
-								}
-			                ?>
+                            }
+                        }
+                        ?>
 
-                        </ul>
-                    </div>
-                    <a class="twitter-timeline" data-lang="es" data-height="1000" href="https://twitter.com/blogdelderecho?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-chrome="noborders">Tweets by blogdelderecho</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    <!--popular Post End Here -->
-                    <?php
-                    $sql_banner = "SELECT * FROM banners WHERE posicion='estandar' LIMIT 1";
-                    $result_banner = $conn->query($sql_banner);
-                    if ($result_banner->num_rows > 0) {
-                        $banner = $result_banner->fetch_assoc();
-                        echo '
+                    </ul>
+                </div>
+                <a class="twitter-timeline" data-lang="es" data-height="1000" href="https://twitter.com/blogdelderecho?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-chrome="noborders">Tweets by blogdelderecho</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <!--popular Post End Here -->
+                <?php
+                $sql_banner = "SELECT * FROM banners WHERE posicion='estandar' LIMIT 1";
+                $result_banner = $conn->query($sql_banner);
+                if ($result_banner->num_rows > 0) {
+                    $banner = $result_banner->fetch_assoc();
+                    echo '
                     
 
                         <a href="'.$banner['url'].'" target="_blank">
@@ -582,11 +579,11 @@
                         </a>
                     ';
 
-                    }
-                    ?>
-                </div>
+                }
+                ?>
             </div>
         </div>
     </div>
+</div>
 
-    <?php include'includes/footer.php'; ?>
+<?php include'includes/footer.php'; ?>

@@ -85,10 +85,10 @@ if(isset($_GET['id'])){
 
                 <label>Posición</label>
                 <select name="posicion" class="form-control">
-                    <option value="top" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'top') echo 'selected'; ?>>Top</option>
-                    <option value="lateral" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'lateral') echo 'selected'; ?>>Lateral</option>
-                    <option value="general" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'general') echo 'selected'; ?>>General</option>
-                    <option value="estandar" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'estandar') echo 'selected'; ?>>Estandar</option>
+                    <option value="cabecera" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'cabecera') echo 'selected'; ?>>Cabecera</option>
+                    <option value="medio" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'medio') echo 'selected'; ?>>Medio</option>
+                    <option value="pie" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'pie') echo 'selected'; ?>>Pie</option>
+                    <!--<option value="estandar" <?php if(isset($_GET['id']) && $fetch['posicion'] == 'estandar') echo 'selected'; ?>>Estandar</option>-->
                 </select>
 
                 <label>Estado</label>
