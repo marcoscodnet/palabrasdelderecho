@@ -498,7 +498,7 @@ ini_set('display_errors', '0');?>
                     <a href="<?php echo RUTA.'suscripciones.html' ?>">
 
                         <div class="banner">
-                            <img src="<?php echo RUTA.'upload/suscripcion.jpg' ?>" alt="Suscribite" style="width: 100%; height: auto;">
+                            <img src="<?php echo RUTA.'upload/suscripcion.jpeg' ?>" alt="Suscribite" style="width: 100%; height: auto;">
                         </div>
 
                     </a>-
