@@ -292,7 +292,7 @@ ini_set('display_errors', '0');?>
 				                                       	</span>
 				                                        <h3><a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'">'.$row['titulo'].'</a></h3>
 				                                        <p>'.$row['bajada'].'</p>
-				                                        <a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'" class="read-more hvr-bounce-to-right">Leer mÃ¡s</a>
+				                                        <a href="'.RUTA.'articulo/'.$row['id'].'/'.seo_url($row['titulo']).'" class="read-more hvr-bounce-to-right">Leer más</a>
 				                                    </div>
 				                                </div>';
                                         $tope=$tope+1; $nousar=$row['id'];
@@ -428,7 +428,7 @@ ini_set('display_errors', '0');?>
                             <div class="view-area" style="margin-bottom: -25px; padding-bottom: 5px;">
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <h3 class="title-bg">LegislaciÃ³n</h3>
+                                        <h3 class="title-bg">Legislación</h3>
                                     </div>
                                     <div class="col-sm-4 text-right">
                                         <a href="<?php echo RUTA.'seccion/4/1/Legislacion' ?>">Ver todas <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
@@ -529,7 +529,7 @@ ini_set('display_errors', '0');?>
                 </div>
                 <div style="height: 40px; width: 100%; float: left"></div>
                 <div class="hot-news popular-related">
-                    <h3 class="title-bg">Ãšltimos Fallos</h3>
+                    <h3 class="title-bg">Últimos Fallos</h3>
                     <ul class="news-post">
                         <?php
                         $sql = "SELECT * FROM fallos ORDER BY id DESC LIMIT 5";
