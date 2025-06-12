@@ -153,9 +153,7 @@
 	          	<input type="text" name="titulo" placeholder="Título" class="form-control" <?php if(isset($_GET['id'])){echo'value="'.htmlentities($fetch['titulo']).'"';} ?>>
 	          	<textarea style="margin: 20px 0;" name="bajada" class="form-control" placeholder="Bajada"><?php if(isset($_GET['id'])){echo htmlentities($fetch['bajada']);} ?></textarea>
 	          	<textarea id="cuerpo" name="cuerpo"  class="form-control" placeholder="Cuerpo de la Nota"><?php if(isset($_GET['id'])){echo $fetch['cuerpo'];}ELSE{
-                      echo '<p></p><p class="MsoListParagraph"><b><span lang="ES-AR">¿Te resulto útil lo que acabás de
-leer?, podés apoyarnos para que continuemos en esta tarea</span></b><span lang="ES-AR">, <b>contribuí con tu suscripción para que<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>nuestro contenido siga siendo abierto y podamos
-brindarte un servicio cada día mejor <a title="Suscribirse" href="https://palabrasdelderecho.com.ar/suscripciones.html" data-mce-href="https://palabrasdelderecho.com.ar/suscripciones.html">Suscribirse</a></b>.</span></p>';
+                      echo '<p></p><hr><p class="MsoListParagraph" style="text-align: justify;" data-mce-style="text-align: justify;"><em><strong><span lang="ES-AR">¿Te resultó útil lo que acabás de leer? Podés apoyarnos para que continuemos en esta tarea. Contribuí con tu suscripción para que nuestro contenido siga siendo abierto y podamos brindarte un servicio cada día mejor.&nbsp;</span></strong><span lang="ES-AR"><strong><a title="Suscribirse" href="https://palabrasdelderecho.com.ar/suscripciones.html" data-mce-href="https://palabrasdelderecho.com.ar/suscripciones.html">Suscribirse</a></strong>.</span></em></p>';
                     } ?></textarea>
 	        </div>
 	        <div class="col-md-3 float-right">

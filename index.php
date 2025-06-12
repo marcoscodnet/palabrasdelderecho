@@ -495,10 +495,10 @@ ini_set('display_errors', '0');?>
                 <div class="slider-right">
 
 
-                    <a href="<?php echo RUTA.'suscripciones.html' ?>">
+                    <a href="https://www.hammurabidigital.com.ar/">
 
                         <div class="banner">
-                            <img src="<?php echo RUTA.'upload/suscripcion.jpeg' ?>" alt="Suscribite" style="width: 100%; height: auto;">
+                            <img src="<?php echo RUTA.'upload/hammurabi.jpeg' ?>" alt="Hammurabi Digital" style="width: 100%; height: auto;">
                         </div>
 
                     </a>-
